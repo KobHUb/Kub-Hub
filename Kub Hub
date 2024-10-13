@@ -1,4 +1,6 @@
-local Rayfield = loadstring(game:HttpGet('https://pastebin.com/raw/aGtt9ckb'))()
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+
 local Window = Rayfield:CreateWindow({
    Name = "🔫 Warzone | KOB HUB 🔫",
     LoadingTitle = "😈 KOB HUB 😈",
