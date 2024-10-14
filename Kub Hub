@@ -3498,17 +3498,39 @@ local Button = MiscTab:CreateButton({
    end,
 })
 
-local CreditsTab = Window:CreateTab("🥶 Credits 🥶", nil) -- Title, Image
+local Section = MiscTab:CreateSection("❓ Other Scripts ❓")
 
-local Section = CreditsTab:CreateSection("🥶 Credits 🥶")
-
-local Button = CreditsTab:CreateButton({
-   Name = "🥶 Credits 🥶",
+local Button = MiscTab:CreateButton({
+   Name = "🔫 Arsenal VG Hub 🔫",
    Callback = function()
-        Rayfield:Notify({
-   Title = "🥶 Credits 🥶",
-   Content = "UI: #silaskid, Scripts: #silaskid, Made EVERYTHING: #silaskid",
-   Duration = 10,
+
+            Rayfield:Notify({
+   Title = "🔫 V.G HUB LOADED 🔫",
+   Content = "🔫 V.G HUB LOADED 🔫",
+   Duration = 6.5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+         loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+   end,
+})
+
+local Button = MiscTab:CreateButton({
+   Name = "SW2",
+   Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/KirawzWeb/Script/main/loader%20beta.lua",true))()
+
+            Rayfield:Notify({
+   Title = "🥶 OverLord Loaded 🥶",
+   Content = "🥶 OverLord Loaded Enjoy 🥶",
+   Duration = 5,
    Image = nil,
    Actions = { -- Notification Buttons
       Ignore = {
@@ -3521,3 +3543,52 @@ local Button = CreditsTab:CreateButton({
 })
    end,
 })
+
+local Section = MiscTab:CreateSection("🥶😈 Discord 🥶😈")
+
+local Button = MiscTab:CreateButton({
+   Name = "🥶😈 Discord 🥶😈",
+   Callback = function()
+        https://discord.gg/2p3aza4HCz
+
+            Rayfield:Notify({
+   Title = "🥶🥶 Discord Server Invite 😈😈",
+   Content = "https://discord.gg/2p3aza4HCz",
+   Duration = 100,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Bet!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+   end,
+})
+
+local CreditsTab = Window:CreateTab("🥶 Credits 🥶", nil) -- Title, Image
+
+local Section = CreditsTab:CreateSection("🥶 Credits 🥶")
+
+local Button = CreditsTab:CreateButton({
+   Name = "🥶 Credits 🥶",
+   Callback = function()
+        Rayfield:Notify({
+   Title = "🥶 Credits 🥶",
+   Content = "UI: #silaskid, Scripts: #silaskid, Made EVERYTHING: #silaskid, Join Our discord https://discord.gg/2p3aza4HCz",
+   Duration = 100,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "KK",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+   end,
+})
+
