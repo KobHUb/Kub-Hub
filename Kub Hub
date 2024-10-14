@@ -95,7 +95,7 @@ local Slider = MainTab:CreateSlider({
    Range = {0, 500},
    Increment = 1,
    Suffix = "Walkspeed",
-   CurrentValue = 10,
+   CurrentValue = 16,
    Flag = "Walkspeed", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
          game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
@@ -3452,11 +3452,72 @@ intro:Destroy()
    end,
 })
 
-local Section = GunModsTab:CreateSection("🔫 Gun Mods 🔫 ")
+local Section = MiscTab:CreateSection("❔Other❔")
 
-local Button = GunModsTab:CreateButton({
-   Name = "🔫 Gun Mods 🔫",
+local Toggle = MiscTab:CreateToggle({
+   Name = "📎NoClip📎",
+   CurrentValue = false,
+   Flag = "📎NoClip📎", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+         
+nam = game.Players.LocalPlayer.Name
+ 
+game:GetService('RunService').Stepped:connect(function()
+for a, b in pairs(game.Workspace:GetChildren()) do
+if b.Name == nam then
+for i, v in pairs(game.Workspace[nam]:GetChildren()) do
+if v:IsA("BasePart") then
+v.CanCollide = false
+ 
+end
+end
+end
+end
+end)
+ 
+Workspace[nam].Head.Changed:connect(function()
+for a, b in pairs(game.Workspace:GetChildren()) do
+if b.Name == nam then
+for i, v in pairs(game.Workspace[nam]:GetChildren()) do
+if v:IsA("BasePart") then
+v.CanCollide = false
+ 
+end
+end
+end
+end
+end)
+
+   end,
+})
+
+local Button = MiscTab:CreateButton({
+   Name = "🫁Destroy UI🫁",
    Callback = function()
-        
+ Rayfield:Destroy()
+   end,
+})
+
+local CreditsTab = Window:CreateTab("🥶 Credits 🥶", nil) -- Title, Image
+
+local Section = CreditsTab:CreateSection("🥶 Credits 🥶")
+
+local Button = CreditsTab:CreateButton({
+   Name = "🥶 Credits 🥶",
+   Callback = function()
+        Rayfield:Notify({
+   Title = "🥶 Credits 🥶",
+   Content = "UI: #silaskid, Scripts: #silaskid, Made EVERYTHING: #silaskid",
+   Duration = 10,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
    end,
 })
