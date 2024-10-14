@@ -103,7 +103,7 @@ local Slider = MainTab:CreateSlider({
 })
 
 local Slider = MainTab:CreateSlider({
-   Name = "JumpPower",
+   Name = "JumpPower (PATCHED....)",
    Range = {0, 300},
    Increment = 1,
    Suffix = "JumpPower",
