@@ -1,13 +1,12 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-
 local Window = Rayfield:CreateWindow({
-   Name = "🔫 Warzone | KOB HUB 🔫",
-    LoadingTitle = "😈 KOB HUB 😈",
-    LoadingSubtitle = "by #silaskid",
+   Name = "🥶 Kob Hub | #silaskid🥶",
+   LoadingTitle = "😈Kob Hub Loading....😈",
+   LoadingSubtitle = "by #silaskid",
    ConfigurationSaving = {
       Enabled = true,
-      FolderName = Kob Hub Folder, -- Create a custom folder for your hub/game
+      FolderName = nil, -- Create a custom folder for your hub/game
       FileName = "Kob Hub"
    },
    Discord = {
@@ -17,23 +16,19 @@ local Window = Rayfield:CreateWindow({
    },
    KeySystem = true, -- Set this to true to use our key system
    KeySettings = {
-      Title = "🥶 KOB HUB KEY SYSTEM 🥶",
-      Subtitle = "🔑 GET KEY IN DISCORD 🔑",
-      Note = "🔑 discord: https://discord.gg/2p3aza4HCz",
-      FileName = "Kub_Hub", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-        SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      Title = "🔑 Kob Hub | Key 🔑",
+      Subtitle = "🔑 Key System 🔑",
+      Note = "Get Key In discord https://discord.gg/2p3aza4HCz",
+      FileName = "Kob Hub Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
       GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"https://pastebin.com/raw/cM35CfPJ"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Key = {"https://pastebin.com/raw/w6EhzDA6"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
-
-local MainTab = Window:CreateTab("🏠 Game", nil) -- Title, Image
-local MainSection = MainTab:CreateSection("Main")
-
 Rayfield:Notify({
-   Title = "🥶 KOB HUB EXECUTED 🥶",
-   Content = "😈 Get Ready To Cheat 😈",
-   Duration = 6.5,
+   Title = "Kob Hub On Top",
+   Content = "You Executed Kub Hub",
+   Duration = 5,
    Image = nil,
    Actions = { -- Notification Buttons
       Ignore = {
@@ -45,59 +40,124 @@ Rayfield:Notify({
 },
 })
 
+
+local MainTab = Window:CreateTab("Player👲", nil) -- Title, Image
+
+local MainSection = MainTab:CreateSection("Player 👲")
+
 local Button = MainTab:CreateButton({
-   Name = "Infinte Jump",
+   Name = "infinite jump (CLICK F)",
    Callback = function()
-        local InfiniteJumpEnabled = true
-game:GetService("UserInputService").JumpRequest:connect(function()
-	if InfiniteJumpEnabled then
-		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-	end
+        -- //~ F to toggle ~\\ --
+ 
+_G.infinjump = true
+ 
+local Player = game:GetService("Players").LocalPlayer
+local Mouse = Player:GetMouse()
+Mouse.KeyDown:connect(function(k)
+if _G.infinjump then
+if k:byte() == 32 then
+Humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+Humanoid:ChangeState("Jumping")
+wait(0.1)
+Humanoid:ChangeState("Seated")
+end
+end
 end)
+ 
+local Player = game:GetService("Players").LocalPlayer
+local Mouse = Player:GetMouse()
+Mouse.KeyDown:connect(function(k)
+k = k:lower()
+if k == "f" then
+if _G.infinjump == true then
+_G.infinjump = false
+else
+_G.infinjump = true
+end
+end
+end)
+
+   end,
+})
+
+local Toggle = MainTab:CreateToggle({
+   Name = "infinite yield",
+   CurrentValue = false,
+   Flag = "infinite yield", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
    end,
 })
 
 local Slider = MainTab:CreateSlider({
    Name = "Walkspeed",
+   Range = {0, 500},
+   Increment = 1,
+   Suffix = "Walkspeed",
+   CurrentValue = 10,
+   Flag = "Walkspeed", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+        end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "JumpPower",
    Range = {0, 300},
    Increment = 1,
-   Suffix = "Speed",
-   CurrentValue = 16,
-   Flag = "Slider1",      
+   Suffix = "JumpPower",
+   CurrentValue = 10,
+   Flag = "JumpPower", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
-         game.Players.localPlayer.Character.Humanoid.WalkSpeed = (Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
    end,
 })
 
-local Dropdown = MainTab:CreateDropdown({
-   Name = "Silent Aim",
-   Options = {"Silent Aim UI (Click UNLOAD IN UI)"},
-   CurrentOption = {"nil"},
-   MultipleOptions = false,
-   Flag = "Pick Aim", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Option)
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Stefanuk12/Aiming/main/Examples/UniversalSilentAim.lua",true))()
-   end,
-})
+local GameTab = Window:CreateTab("🕹️ Game", nil) -- Title, Image
 
-local LocalTab = Window:CreateTab("🥶 Local", nil) -- Title, Image
+local Section = GameTab:CreateSection("🕹️ Game 🕹️")
 
-local Section = LocalTab:CreateSection("infinite yield")
 
-local Button = LocalTab:CreateButton({
-   Name = "infinite yield",
+local Button = GameTab:CreateButton({
+   Name = "Btools (CLICK P)",
    Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+ 
+mouse.KeyDown:connect(function(key)
+    key = string.lower(key)
+ 
+	if key == "p" then
+		for item = 1, 4 do
+			HopperBin = Instance.new("HopperBin", game.Players.LocalPlayer.Backpack)
+			HopperBin.BinType = item
+		end
+	elseif key == "l" then
+		function UnlockWorkspace(a)
+			for n,part in pairs(a:GetChildren()) do
+				if(part:IsA("BasePart")) then 
+					part.Locked = false 
+				end
+				UnlockWorkspace(part)
+			end
+		end
+		UnlockWorkspace(workspace)
+	elseif key == "k" then
+		local StarterGui = game:GetService("StarterGui")
+		StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, true)
+	end
+end)
+ 
+
    end,
 })
 
-local MiscTab = Window:CreateTab("🎲 Misc", nil) -- Title, Image
-
-local Section = MiscTab:CreateSection("Aimbot (CLICK X)")
-
-local Button = MiscTab:CreateButton({
-   Name = "Aimbot (CLICK X)",
-   Callback = function()
+local Toggle = GameTab:CreateToggle({
+   Name = "🤖 Aimbot (click X)🤖",
+   CurrentValue = false,
+   Flag = "🤖 Aimbot 🤖", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
         -- Made By Hugbif4
 -- Variables
 local player = game.Players.LocalPlayer
@@ -167,125 +227,7 @@ RunService.RenderStepped:Connect(function()
 		lockCameraOntoTarget(targetPlayer)
 	end
 end)
-   end,
-})
 
-local Toggle = MiscTab:CreateToggle({
-   Name = "Kill Aura",
-   CurrentValue = false,
-   Flag = "Kill Aura", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-        if game.Players.LocalPlayer == nil then
-    game.Players:GetPropertyChangedSignal("LocalPlayer"):Wait()
-end
- 
-local Player = game.Players.LocalPlayer
-local Debounce = false
-local Killaura = true
-local Mouse = Player:GetMouse()
-local function Attack(Target)
-    if Player.Character == nil or Target.Character == nil then
-        return
-    end
-    local WeaponFolder = Player.Character:FindFirstChildOfClass("Folder")
-    if WeaponFolder == nil or not WeaponFolder:FindFirstChild("Laminas") then
-        return
-    end
-    if Target.Character:FindFirstChild("Humanoid") and Target.Character.Humanoid.Health <= 0 then
-        return
-    end
-    game:GetService("ReplicatedStorage").LocalPlayer.EventoPrincipal:FireServer("Estado Ataque", true, 1, {})
-    for i,v in pairs(Target.Character:GetChildren()) do
-        if v:IsA("UnionOperation") then
-            game:GetService("ReplicatedStorage").LocalPlayer.EventoPrincipal:FireServer("Parte Acertada", v.CFrame, WeaponFolder.Laminas.Lamina, v, v.CFrame * CFrame.new(0,math.random(-2,2),math.random(-3,3)), v.CFrame * CFrame.new(0,math.random(-2,2),math.random(-3,3)))
-        end
-    end
-    game:GetService("ReplicatedStorage").LocalPlayer.EventoPrincipal:FireServer("Estado Ataque", false)
-end
- 
-game:GetService('RunService').Stepped:connect(function()
-    if Debounce == false and Killaura == true then 
-        Debounce = true
-        for i,v in pairs(game.Players:GetPlayers()) do
-            if v ~= Player and not Player:IsFriendsWith(v.UserId) and v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") and Player:DistanceFromCharacter(v.Character.HumanoidRootPart.Position) <= 20 then
-                Attack(v)
-            end
-        end
-        wait()
-        Debounce = false
-    end
-end)
- 
-Mouse.KeyDown:Connect(function(key)
-    if key == "g" then
-        Killaura = not Killaura
-        local currenttext = ""
-        if Killaura == true then
-            currenttext = "Killaura is now turned ON!"
-        else
-            currenttext = "Killaura is now turned OFF!"
-        end
-        game.StarterGui:SetCore("SendNotification", {
-            Title = "notification";
-            Text = currenttext;
-            Icon = "rbxassetid://2541869220";
-            Duration = 3;
-        })
-    end
-end)
- 
-game.StarterGui:SetCore("SendNotification", {
-    Title = "Killaura is now on";
-    Text = "Press G to toggle\n Made by #silaskid";
-    Icon = "rbxassetid://2541869220";
-    Duration = 7;
-})
 
-   end,
-})
-
-local Section = MiscTab:CreateSection("NoClip")
-
-local Button = MiscTab:CreateButton({
-   Name = "NoClip",
-   Callback = function()
-         
-nam = game.Players.LocalPlayer.Name
- 
-game:GetService('RunService').Stepped:connect(function()
-for a, b in pairs(game.Workspace:GetChildren()) do
-if b.Name == nam then
-for i, v in pairs(game.Workspace[nam]:GetChildren()) do
-if v:IsA("BasePart") then
-v.CanCollide = false
- 
-end
-end
-end
-end
-end)
- 
-Workspace[nam].Head.Changed:connect(function()
-for a, b in pairs(game.Workspace:GetChildren()) do
-if b.Name == nam then
-for i, v in pairs(game.Workspace[nam]:GetChildren()) do
-if v:IsA("BasePart") then
-v.CanCollide = false
- 
-end
-end
-end
-end
-end)
-
-   end,
-})
-
-local Input = MiscTab:CreateInput({
-   Name = "Jump Power",
-   PlaceholderText = "0-200",
-   RemoveTextAfterFocusLost = true,
-   Callback = function(Text)
-            game.Players.localPlayer.Character.Humanoid.JumpPower = (Text)
    end,
 })
