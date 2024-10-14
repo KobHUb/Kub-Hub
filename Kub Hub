@@ -3566,7 +3566,7 @@ local Button = MiscTab:CreateButton({
    end,
 })
 
-local GunThingsTab = Window:CreateTab("🥶🥶 Gun Things 😈😈", nil) -- Title, Image
+local GunThingsTab = Window:CreateTab("🥶 Gun Things 😈", nil) -- Title, Image
 
 local Section = GunThingsTab:CreateSection("🥶🥶 Gun Things 😈😈")
 
@@ -3585,9 +3585,9 @@ Duration = 70;
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RFS-cmd/-/main/first"))()
  
 Aiming.TargetPart = {"HumanoidRootPart"}
-Aiming.FOV = 210
+Aiming.FOV = 500
 Aiming.FOVSides = 250
-Aiming.HitChance = 170
+Aiming.HitChance = 10000
 Aiming.ShowFOV = false
 getgenv().AutoPrediction = true
 getgenv().Prediction = 0.157
@@ -3631,6 +3631,8 @@ end
 
    end,
 })
+
+
 
 
 local CreditsTab = Window:CreateTab("🥶 Credits 🥶", nil) -- Title, Image
